@@ -20,7 +20,7 @@ $(function() {
   });
 
   $('.card').click(function(){
-    $(this).toggleClass('active');
+    $(this).toggleClass('flip');
   })
 
 

@@ -1,11 +1,16 @@
-@import "normalize",
+@import "compass/css3/box-shadow",
+        "compass/css3/transform",
+        "compass/css3/transition",
+        "normalize",
         "h5bp";
 
-$wrapper_max_width: 1800px;
+$wrapper_max_width: 1760px;
 
-$green:  #00ff00;
-$blue:   #0000ff;
-$yellow: #ffff00;
+$default_transition: all .4s ease-in-out;
+
+$green:  #788A4B;
+$blue:   #64758F;
+$yellow: #CDB964;
 
 /*=============================================*/
 
@@ -50,15 +55,41 @@ img { max-width: 100%; }
     &.active { display: block; }
   }
 
-    .card {
-      float: left;
-      &:after { content: attr(data-count); }
-      &:hover .side_one, &.active .side_one { display: none; }
-      &:hover .side_two, &.active .side_two { display: table-cell; }
+    .side_one, .side_two {
+      @include backface-visibility(hidden);
+      @include transition($default_transition);
+      display: block;
+      height: 100%;
+      position: absolute;
+      width: 100%;
     }
-      .side_one, .side_two {
-        display: table-cell;
-        height: 730px;
-        max-width: 440px;
+    .side_one {
+      @include rotateY(0deg);
+      @include transform-style(preserve-3d);
+      z-index: 900;
+    }
+    .side_two {
+      @include rotateY(-180deg);
+      @include transform-style(preserve-3d);
+      background: #e4ce96;
+      z-index: 800;
+    }
+
+    .card {
+      @include perspective(1600);
+      float: left;
+      height: 730px;
+      position: relative;
+      width: 440px;
+      &:after { content: attr(data-count); }
+      &:hover .side_one, &:hover .side_two { @include box-shadow(0 0 5px #000); }
+      &:hover .side_one, &.flip .side_one {
+        @include rotateY(180deg);
+        @include transition($default_transition);
       }
-      .side_two { display: none; }
+      &:hover .side_two, &.flip .side_two {
+        @include rotateY(0deg);
+        @include transition($default_transition);
+        z-index: 1000;
+      }
+    }
