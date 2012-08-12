@@ -4,7 +4,7 @@
         "normalize",
         "h5bp";
 
-$wrapper_max_width: 1760px;
+$wrapper_max_width: 1800px;
 
 $default_transition: all .4s ease-in-out;
 
@@ -26,25 +26,25 @@ body {
 
 img { max-width: 100%; }
 
-#progress { position: relative; }
-
-  #nav_progress ol {
-    margin: 0;
-    padding: 0;
+#nav_progress ol {
+  background: $yellow;
+  margin: 0;
+  padding: 0;
+  max-width: $wrapper_max_width - 10;
+}
+  #nav_progress li {
+    float: left;
+    width: 33%;
   }
-    #nav_progress li {
-      float: left;
-      width: 33%;
+    #nav_progress a {
+      color: white;
+      display: block;
+      font: bold 40px sans-serif;
+      padding: 5px 0;
+      text-align: center;
+      text-decoration: none;
+      text-transform: uppercase;
     }
-      #nav_progress a {
-        color: white;
-        display: block;
-        font: bold 40px sans-serif;
-        padding: 5px 0;
-        text-align: center;
-        text-decoration: none;
-        text-transform: uppercase;
-      }
 
 
   .realm {
@@ -59,19 +59,22 @@ img { max-width: 100%; }
       @include backface-visibility(hidden);
       @include transition($default_transition);
       display: block;
-      height: 100%;
       position: absolute;
-      width: 100%;
     }
     .side_one {
       @include rotateY(0deg);
       @include transform-style(preserve-3d);
+      height: 100%;
+      width: 100%;
       z-index: 900;
     }
     .side_two {
       @include rotateY(-180deg);
       @include transform-style(preserve-3d);
       background: #e4ce96;
+      height: 690px;
+      padding: 20px;
+      width: 400px;
       z-index: 800;
     }
 
@@ -79,10 +82,11 @@ img { max-width: 100%; }
       @include perspective(1600);
       float: left;
       height: 730px;
+      margin: 0 10px 10px 0;
       position: relative;
       width: 440px;
       &:after { content: attr(data-count); }
-      &:hover .side_one, &:hover .side_two { @include box-shadow(0 0 5px #000); }
+      &:hover .side_one, &:hover .side_two { @include box-shadow(0 5px 15px #4B4023); }
       &:hover .side_one, &.flip .side_one {
         @include rotateY(180deg);
         @include transition($default_transition);
