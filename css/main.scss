@@ -1,0 +1,64 @@
+@import "normalize",
+        "h5bp";
+
+$wrapper_max_width: 1800px;
+
+$green:  #00ff00;
+$blue:   #0000ff;
+$yellow: #ffff00;
+
+/*=============================================*/
+
+.bg_green  { background: $green; }
+.bg_blue   { background: $blue; }
+.bg_yellow { background: $yellow; }
+
+body {
+  margin: 0 auto;
+  max-width: $wrapper_max_width;
+  width: auto;
+}
+
+img { max-width: 100%; }
+
+#progress { position: relative; }
+
+  #nav_progress ol {
+    margin: 0;
+    padding: 0;
+  }
+    #nav_progress li {
+      float: left;
+      width: 33%;
+    }
+      #nav_progress a {
+        color: white;
+        display: block;
+        font: bold 40px sans-serif;
+        padding: 5px 0;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+
+  .realm {
+    display: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    &.active { display: block; }
+  }
+
+    .card {
+      float: left;
+      &:after { content: attr(data-count); }
+      &:hover .side_one, &.active .side_one { display: none; }
+      &:hover .side_two, &.active .side_two { display: table-cell; }
+    }
+      .side_one, .side_two {
+        display: table-cell;
+        height: 730px;
+        max-width: 440px;
+      }
+      .side_two { display: none; }
