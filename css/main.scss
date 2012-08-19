@@ -4,7 +4,13 @@
         "normalize",
         "h5bp";
 
-$wrapper_max_width: 1800px;
+// xl   | l    | n   | xl_half | tablet | phone
+// 1920 | 1382 | 992 | 960     | 768    | 480
+
+//        l    | s   |         | tablet | phone
+//        1200 | 960 |         | 768    | 480
+
+$wrapper_max_width: 1300px;
 
 $default_transition: all .4s ease-in-out;
 
@@ -19,10 +25,18 @@ $yellow: #CDB964;
 .bg_yellow { background: $yellow; }
 
 body {
+  background: fixed #fff top left repeat-x;
   margin: 0 auto;
   max-width: $wrapper_max_width;
   width: auto;
 }
+.bg0, .bg1, .bg2, .bg3, .bg4, .bg5 { @include transition(all 2s ease-in-out); }
+.bg0                                { background-image: url(../img/bg/desert.jpg); } // The seemingly unnecessary selectors preload the
+.bg1, .card:nth-child(1n) .side_one { background-image: url(../img/bg/field.jpg); }  // background images to prevent a flash on image change.
+.bg2, .card:nth-child(2n) .side_one { background-image: url(../img/bg/forest.jpg); }
+.bg3, .card:nth-child(3n) .side_one { background-image: url(../img/bg/hill.jpg); }
+.bg4, .card:nth-child(4n) .side_one { background-image: url(../img/bg/mountain.jpg); }
+.bg5, .card:nth-child(5n) .side_one { background-image: url(../img/bg/pasture.jpg); }
 
 img { max-width: 100%; }
 
@@ -30,11 +44,11 @@ img { max-width: 100%; }
   background: $yellow;
   margin: 0;
   padding: 0;
-  max-width: $wrapper_max_width - 10;
+  max-width: $wrapper_max_width;
 }
   #nav_progress li {
     float: left;
-    width: 33%;
+    width: $wrapper_max_width/3;
   }
     #nav_progress a {
       color: white;
@@ -48,15 +62,17 @@ img { max-width: 100%; }
 
 
   .realm {
+    background: rgba(255,255,255,0.3);
     display: none;
     list-style: none;
-    margin: 0;
-    padding: 0;
+    margin: 0 0 20px;
+    padding: 10px 20px 20px;
     &.active { display: block; }
   }
 
     .side_one, .side_two {
       @include backface-visibility(hidden);
+      @include box-shadow(0 2px 5px #6d6245);
       @include transition($default_transition);
       display: block;
       position: absolute;
@@ -66,27 +82,31 @@ img { max-width: 100%; }
       @include transform-style(preserve-3d);
       height: 100%;
       width: 100%;
-      z-index: 900;
     }
     .side_two {
       @include rotateY(-180deg);
       @include transform-style(preserve-3d);
       background: #e4ce96;
-      height: 690px;
-      padding: 20px;
-      width: 400px;
-      z-index: 800;
+      height: 100%;
+      width: 100%;
+      & .gamma { padding: 20px 20px 0; }
+      & p { padding: 0 20px; }
     }
 
     .card {
       @include perspective(1600);
       float: left;
-      height: 730px;
-      margin: 0 10px 10px 0;
+      height: 498px;
+      margin: 10px 20px 0 0;
       position: relative;
-      width: 440px;
+      width: 300px;
+      &:active .side_one, &:active .side_two {
+        @include box-shadow(0 0 0);
+        @include transition(all 0s ease-in-out);
+      }
       &:after { content: attr(data-count); }
-      &:hover .side_one, &:hover .side_two { @include box-shadow(0 5px 15px #4B4023); }
+      &:hover { z-index: 900; }
+      &:hover .side_one, &:hover .side_two { @include box-shadow(0 5px 15px #8f8467); }
       &:hover .side_one, &.flip .side_one {
         @include rotateY(180deg);
         @include transition($default_transition);
@@ -94,6 +114,6 @@ img { max-width: 100%; }
       &:hover .side_two, &.flip .side_two {
         @include rotateY(0deg);
         @include transition($default_transition);
-        z-index: 1000;
       }
+      &:nth-child(4n){ margin-right: 0; }
     }
