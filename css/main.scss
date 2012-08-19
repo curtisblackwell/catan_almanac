@@ -25,7 +25,7 @@ $yellow: #CDB964;
 .bg_yellow { background: $yellow; }
 
 body {
-  background: fixed #fff top left repeat-x;
+  background: fixed #fff left top repeat-x;
   margin: 0 auto;
   max-width: $wrapper_max_width;
   width: auto;
@@ -89,8 +89,20 @@ img { max-width: 100%; }
       background: #e4ce96;
       height: 100%;
       width: 100%;
-      & .gamma { padding: 20px 20px 0; }
-      & p { padding: 0 20px; }
+      & .gamma {
+        padding: 0px 20px 0;
+        text-align: center;
+      }
+      & p {
+        bottom: 0;
+        display: table-cell;
+        height: 150px;
+        padding: 0 20px;
+        position: absolute;
+        text-align: center;
+        vertical-align: middle;
+        width: 260px;
+      }
     }
 
     .card {
@@ -104,7 +116,6 @@ img { max-width: 100%; }
         @include box-shadow(0 0 0);
         @include transition(all 0s ease-in-out);
       }
-      &:after { content: attr(data-count); }
       &:hover { z-index: 900; }
       &:hover .side_one, &:hover .side_two { @include box-shadow(0 5px 15px #8f8467); }
       &:hover .side_one, &.flip .side_one {
