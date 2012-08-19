@@ -10,7 +10,7 @@
 //        l    | s   |         | tablet | phone
 //        1200 | 960 |         | 768    | 480
 
-$wrapper_max_width: 1300px;
+$full_width: 1300px;
 
 $default_transition: all .4s ease-in-out;
 
@@ -27,8 +27,7 @@ body {
   background: fixed #fff left top repeat-x;
   font: 18px/25px serif;
   margin: 0 auto;
-  max-width: $wrapper_max_width;
-  width: auto;
+  width: $full_width;
 }
 .bg0, .bg1, .bg2, .bg3, .bg4, .bg5 { @include transition(all 2s ease-in-out); }
 .bg0                                { background-image: url(../img/bg/desert.jpg); } // The seemingly unnecessary selectors preload the
@@ -57,11 +56,11 @@ img { max-width: 100%; }
   background: $yellow;
   margin: 0;
   padding: 0;
-  max-width: $wrapper_max_width;
+  max-width: $full_width;
 }
   #nav_progress li {
     float: left;
-    width: $wrapper_max_width/3;
+    width: $full_width/3;
   }
     #nav_progress a {
       color: white;
