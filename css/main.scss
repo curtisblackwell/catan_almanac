@@ -38,7 +38,10 @@ body {
 .bg4, .card:nth-child(4n) .side_one { background-image: url(../img/bg/mountain.jpg); }
 .bg5, .card:nth-child(5n) .side_one { background-image: url(../img/bg/pasture.jpg); }
 
-.alpha { font: 50px $IMFellSC, serif; }
+.alpha {
+  font: 60px $IMFellSC, serif;
+  text-align: center;
+}
 .beta  { font: italic 40px $IMFell, serif; }
 .gamma { font: italic 30px $IMFell, serif; }
 
