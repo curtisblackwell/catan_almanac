@@ -56,13 +56,14 @@ img { max-width: 100%; }
   background: $yellow;
   margin: 0;
   padding: 0;
-  max-width: $full_width;
+  width: $full_width;
 }
   #nav_progress li {
     float: left;
     width: $full_width/3;
   }
     #nav_progress a {
+      background-image: url(../img/texture.png);
       color: white;
       display: block;
       font: 40px $IMFellSC serif;
@@ -78,6 +79,7 @@ img { max-width: 100%; }
     list-style: none;
     margin: 0 0 20px;
     padding: 10px 20px 20px;
+    width: $full_width - 40px;
     &.active { display: block; }
   }
 
@@ -127,15 +129,28 @@ img { max-width: 100%; }
         @include box-shadow(0 0 0);
         @include transition(all 0s ease-in-out);
       }
-      &:hover { z-index: 900; }
-      &:hover .side_one, &:hover .side_two { @include box-shadow(0 5px 15px #8f8467); }
-      &:hover .side_one, &.flip .side_one {
+      &.flip .side_one {
         @include rotateY(180deg);
         @include transition($default_transition);
       }
-      &:hover .side_two, &.flip .side_two {
+      &.flip .side_two {
         @include rotateY(0deg);
         @include transition($default_transition);
       }
       &:nth-child(4n){ margin-right: 0; }
+    }
+
+    @media screen and (min-width: 992px) {
+      .card {
+        &:hover { z-index: 900; }
+        &:hover .side_one, &:hover .side_two { @include box-shadow(0 5px 15px #8f8467); }
+        &:hover .side_one {
+          @include rotateY(180deg);
+          @include transition($default_transition);
+        }
+        &:hover .side_two {
+          @include rotateY(0deg);
+          @include transition($default_transition);
+        }
+      }
     }
