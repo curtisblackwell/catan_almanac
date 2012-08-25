@@ -129,15 +129,28 @@ img { max-width: 100%; }
         @include box-shadow(0 0 0);
         @include transition(all 0s ease-in-out);
       }
-      &:hover { z-index: 900; }
-      &:hover .side_one, &:hover .side_two { @include box-shadow(0 5px 15px #8f8467); }
-      &:hover .side_one, &.flip .side_one {
+      &.flip .side_one {
         @include rotateY(180deg);
         @include transition($default_transition);
       }
-      &:hover .side_two, &.flip .side_two {
+      &.flip .side_two {
         @include rotateY(0deg);
         @include transition($default_transition);
       }
       &:nth-child(4n){ margin-right: 0; }
+    }
+
+    @media screen and (min-width: 992px) {
+      .card {
+        &:hover { z-index: 900; }
+        &:hover .side_one, &:hover .side_two { @include box-shadow(0 5px 15px #8f8467); }
+        &:hover .side_one {
+          @include rotateY(180deg);
+          @include transition($default_transition);
+        }
+        &:hover .side_two {
+          @include rotateY(0deg);
+          @include transition($default_transition);
+        }
+      }
     }
