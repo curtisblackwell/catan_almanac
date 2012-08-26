@@ -4,12 +4,6 @@
         "normalize",
         "h5bp";
 
-// xl   | l    | n   | xl_half | tablet | phone
-// 1920 | 1382 | 992 | 960     | 768    | 480
-
-//        l    | s   |         | tablet | phone
-//        1200 | 960 |         | 768    | 480
-
 $full_width: 1300px;
 
 $default_transition: all .4s ease-in-out;
@@ -24,21 +18,11 @@ $IMFellSC: "IM Fell DW Pica SC";
 /*=============================================*/
 
 html {
+  font: 18px/1.4 serif;
   margin: 0 auto;
   width: $full_width;
 }
-
-body {
-  background: fixed #fff left top repeat-x;
-  font: 18px/1.4 serif;
-}
-.bg0, .bg1, .bg2, .bg3, .bg4, .bg5 { @include transition(all 2s ease-in-out); }
-.bg0                                { background-image: url(../img/bg/desert.jpg); } // The seemingly unnecessary selectors preload the
-.bg1, .card:nth-child(1n) .side_one { background-image: url(../img/bg/field.jpg); }  // background images to prevent a flash on image change.
-.bg2, .card:nth-child(2n) .side_one { background-image: url(../img/bg/forest.jpg); }
-.bg3, .card:nth-child(3n) .side_one { background-image: url(../img/bg/hill.jpg); }
-.bg4, .card:nth-child(4n) .side_one { background-image: url(../img/bg/mountain.jpg); }
-.bg5, .card:nth-child(5n) .side_one { background-image: url(../img/bg/pasture.jpg); }
+body { background: #F5E6B5 url(../img/texture.png) repeat; }
 
 .alpha {
   font: 60px $IMFellSC, serif;
@@ -67,12 +51,13 @@ img { max-width: 100%; }
   }
     #nav_progress a {
       background-image: url(../img/texture.png);
-      color: white;
+      color: #fff;
       display: block;
       font: 40px $IMFellSC serif;
       padding: 5px 0;
       text-align: center;
       text-decoration: none;
+      text-shadow: -1px -1px 0px #666;
     }
 
 
@@ -143,9 +128,20 @@ img { max-width: 100%; }
     }
 
 /*=============================================*/
+//        l    | s   | tablet | phone
+//        1200 | 960 | 768    | 480
 
     // Small and Large Screens
     @media screen and (min-width: 960px) {
+      body { background: fixed #fff left top repeat-x; }
+      .bg0, .bg1, .bg2, .bg3, .bg4, .bg5 { @include transition(all 2s ease-in-out); }
+      .bg0                                { background-image: url(../img/bg/desert.jpg); } // The seemingly unnecessary selectors preload the
+      .bg1, .card:nth-child(1n) .side_one { background-image: url(../img/bg/field.jpg); }  // background images to prevent a flash on image change.
+      .bg2, .card:nth-child(2n) .side_one { background-image: url(../img/bg/forest.jpg); }
+      .bg3, .card:nth-child(3n) .side_one { background-image: url(../img/bg/hill.jpg); }
+      .bg4, .card:nth-child(4n) .side_one { background-image: url(../img/bg/mountain.jpg); }
+      .bg5, .card:nth-child(5n) .side_one { background-image: url(../img/bg/pasture.jpg); }
+
       .card {
         &:hover { z-index: 900; }
         &:hover .side_one, &:hover .side_two { @include box-shadow(0 5px 15px #8f8467); }
@@ -224,7 +220,7 @@ img { max-width: 100%; }
 
 
     // Low-Res Phones
-    @media screen and (min-width: 480px) and (max-width: 767px) {
+    @media screen and (min-width: 1px) and (max-width: 767px) {
       $full_width: 480px;
 
       .gamma { font-size: 22px; }
