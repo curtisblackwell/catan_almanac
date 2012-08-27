@@ -109,28 +109,26 @@ img { max-width: 100%; }
                   .realm { width: $full_width - 40px; }
 }
 
+@mixin x_cards_wide($x) {
+  .card {
+    &:nth-child(-n+#{$x}) { margin-top: 0; }
+    &:nth-child(#{$x}n)   { margin-right: 0; }
+  }
+}
+
 //////
 
 // 2 cards wide
 @media screen and (max-width: 767px) {
-  .card {
-    &:nth-child(-n + 2) { margin-top:   0; }
-    &:nth-child(2n)     { margin-right: 0; }
-  }
+  @include x_cards_wide(2);
 }
 // 3 cards wide
 @media screen and (min-width: 768px) and (max-width: 1299px) {
-  .card {
-    &:nth-child(-n + 3) { margin-top:   0; }
-    &:nth-child(3n)     { margin-right: 0; }
-  }
+  @include x_cards_wide(3);
 }
 // 4 cards wide
 @media screen and (min-width: 1300px) {
-  .card {
-    &:nth-child(-n + 4) { margin-top:   0; }
-    &:nth-child(4n)     { margin-right: 0; }
-  }
+  @include x_cards_wide(4);
 }
 
 //////
