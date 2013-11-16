@@ -41,12 +41,12 @@ $(function() {
   $('.show').click(function(){
     $('.hide').removeClass('active');
     $(this).addClass('active');
-    $('.realm').fadeIn();
+    $('#progress, #development').fadeIn();
   });
   $('.hide').click(function(){
     $('.show').removeClass('active');
     $(this).addClass('active');
-    $('.realm').fadeOut();
+    $('#progress, #development').fadeOut();
   });
 
 });
