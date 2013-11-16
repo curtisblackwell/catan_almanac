@@ -2,7 +2,8 @@
         "compass/css3/transform",
         "compass/css3/transition",
         "normalize",
-        "h5bp";
+        "h5bp",
+        "bootstrap";
 
 $default_transition: all .4s ease-in-out;
 
@@ -33,6 +34,12 @@ img { max-width: 100%; }
 .bg_green  { background: $green; }
 .bg_blue   { background: $blue; }
 .bg_yellow { background: $yellow; }
+
+.btn {
+  background-image: url(../img/texture.png);
+  font-family: $IMFell, serif;
+  text-shadow: -1px -1px 0px #666;
+}
 
 /*=============================================*/
 
@@ -100,6 +107,10 @@ img { max-width: 100%; }
         text-align: center;
       }
     }
+
+/*=============================================*/
+
+.right { float: right; }
 
 /*=============================================*/
 
